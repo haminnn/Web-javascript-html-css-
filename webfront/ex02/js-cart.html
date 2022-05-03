@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+        <title>JS Cart</title>
+        <style>
+            #list li {
+                height: 30px;
+            }
+        </style>
+        <script src="./script/jquery-3.6.0.js"></script>
+    </head>
+    <body>
+        <div id="header">
+            <h1>Shopping List</h1>
+        </div>
+        <div id="cart-list">
+            <ul id="list">
+                <li>무</li>
+                <li>배추</li>
+                <li>쪽파</li>
+                <li>고춧가루</li>
+            </ul>
+        </div>
+        <div id="cart-input">
+            <input id="item"><button id="btn-add">추가</button>
+        </div>
+        <div id="footer">
+            &copy;Bit Academy
+        </div>
+    </body>
+    <script>
+        function addItem(){
+            // let itemInput = document.getElementById("item");
+            // let item = itemInput.value.trim();
+            let itemInput = $("#item");
+            let item = itemInput.val().trim();
+            // alert(item);
+            if(item.length > 0){
+                // 부모 요소 선택
+                // let container = document.getElementById("list");
+                let container = $("#list");
+
+                // 새로운 노드 생성
+                // let itemNode = document.createElement("li");
+                // jQuery 새로운 노드 생성
+                let itemNode = $("<li>");
+                
+                // 콘텐츠와 속성 설정
+                // itemNode.innerText = item;
+                itemNode.text(item);
+
+                // let toolbar = document.createElement("div");
+                // toolbar.style.display = "inline";
+                // itemNode.appendChild(toolbar);
+                let toolbar = $("<div>");
+                toolbar.css("display", "inline");
+                itemNode.append(toolbar);
+
+                // let delBtn = document.createElement("button");
+                // delBtn.innerText = "삭제";
+
+                let delBtn = $("<button>")
+                                .text("삭제")
+                                .css("float", "right");
+                toolbar.append(delBtn);
+
+                // 부모 노드에 추가
+                // container.appendChild(itemNode);
+                container.append(itemNode);
+
+                // 부모를 찾아서 요소를 삭제
+                delBtn.on("click", function(event){
+                    let removeItem = $(event.target.parentNode.parentNode);
+                    console.log(removeItem);
+                    removeItem.remove();
+                });
+
+                // 입력 상자 비우고, 포커스
+                // itemInput.value = "";
+                itemInput.val("");
+                itemInput.focus();
+                
+            }
+        }
+        $(document).ready(function(event){
+            let cartItems = $("#list > li");
+            console.log("items:", cartItems);
+            // for (let i = 0; i < cartItems.length; i++){
+            //    cartItems[i].parentNode.removechild(cartItems[i]);
+            // }
+            cartItems.each(function(index, item){
+                // 부모를 몰라도 삭제할 수 있다.
+                console.log("카트 아이템:", index, "-", item);
+                item.remove();
+                console.log("아이템 삭제");
+            });
+
+            // 버튼 #btn-add에 click 이벤트 리스너 연결
+            // document.getElementById("btn-add")
+            //     .addEventListener("click", addItem);
+                $("#btn-add").on("click", addItem);
+        })
+    </script>
+</html>

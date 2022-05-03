@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Test</title>
+    <!-- jQuery-->
+    <script src="./script/jquery-3.6.0.js"></script>
+    <style>
+        .poster{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btnCallSnippet">HTML 조각 불러오기</button>
+    <button id="btnCallMovies">영화 목록 불러오기</button>
+
+    <!-- 표시 영역 -->
+    <div id="info"></div><!-- HTML 조각표시 -->
+    <!-- 영화 API 데이터를 표시 -->
+    <table id="list" border="1" width="640px"></table>
+</body>
+<script>
+    // jquery 초기화
+    $(document).ready(function(event){
+        $("#btnCallMovies").on("click", function(event){
+            $.ajax({
+                url: "http://localhost:3000/movies",
+                type: "GET",
+                dataType: "json",
+                success: function(response){
+                    console.log(response);
+
+                    let movies = response.movies; // Array
+                    for(let i = 0; i < movies.length; i++){
+                        // 개별 무비
+                        let movie = movies[i];
+                        console.log("movie:", movie);
+
+                        //table#list에 tr로 넣어보자
+                        let title = movie.title;
+                        let director = movie.director;
+                        let movieId = movie.id;
+                        let poster = "http://localhost:3000/images/" + movie.image;
+
+                        let tr = $("<tr>");
+                        tr.html(`
+                        <td><img class="poster" src="${poster}"></td>
+                        <td>${title}</td>
+                        <td>${director}</td>
+                        `);
+
+                        $("#list").append(tr);
+                    }
+                },
+                error: function(request, status, error){
+                    console.error("Error 발생시 요청 정보:",
+                    request);
+                    console.error("STATUS:", status);
+                    console.error("ERROR:", error);
+                }
+            });
+        });
+
+        $("#btnCallSnippet").on("click", function(event){
+            // Ajax 호출
+            $.ajax({
+                url: "snippet.html", // 요청할 주소
+                type: "GET", // 요청방식(GET, POST)
+                dataType: "text", // 응답의 데이터 형식
+                success: function(response){
+                    // 요청 성공시 실행될 콜백 함수
+                    console.log(response);
+                    $("#info").html(response);
+
+                }
+
+
+            })
+        });
+    })
+</script>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Bit Lounge 건강음료</title>
+<meta http-equiv="Content"
+content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="./css/style.css" />
+<style>
+  h1 {
+    font-family: "궁서체", "신명조", serif;
+    /* 가장 마지막에 일반 글꼴(serif, sans-serif, monospace)을 명시 */
+  }
+  /* id 선택자 #아이디 */
+  #green {
+    color: green; /* 키워드 */
+    color: #00FF00; /* 16진수 */
+    color: rgb(0, 255, 0); /* rgb 진수 */
+  }
+  #blue {
+    color: blue;
+    color: #0000FF;
+    color: rgb(0, 0, 255);
+  }
+  #purple{
+    color: purple;
+    color: #800080;
+    color: rgb(128, 0, 128);
+  }
+  #red {
+    color: red;
+    color: #FF0000;
+    color: rgb(255, 0, 0);
+  }
+  /* 클래스 선택자 : .클래스명 */
+  .beverage {
+    padding: 10px;
+    min-height: 150px;
+  }
+  /* 선택자1선택자2 : 선택자1 and 선택자2 */
+  .beverage.green {
+    background-color: #00FF0020;
+    background-color: rgba(0, 255, 0, 0.1);
+  }
+  .beverage.blue {
+    background-color: #0000FF;
+    background-color: rgba(0, 0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             , 255, 0.1);
+  }
+  .beverage.purple {
+    background-color: #00FF0020;
+    background-color: rgba(0, 255, 0, 0.1);
+  }
+  .beverage.red {
+    background-color: #FF000020;
+    background-color: rgba(255, 0, 0, 0.1);
+  }
+
+  /* 자식 선택자(선택자1 > 선택자2), 후손 선택자(선택자1 선택자2) */
+  .beverage h2 { /* class="beverage"의 후손들 */
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  /* 구조 선택자 */
+  .menu > li:first-child{
+    background-color: rgba(0, 128, 0, 0.1);
+  }
+  .menu > li:nth-child(2){
+    background-color: rgba(0, 0, 255, 0.1);
+  }
+  .menu > li:nth-child(3){
+    background-color: rgba(128, 0, 128, 0.1);
+  }
+  .menu > li:last-child{
+    background-color: rgba(255, 0, 0, 0.1);
+  }
+
+</style>
+</head>
+<body>
+  <header>
+    <h1>건강 음료</h1>
+  </header>
+  <nav>
+    <!-- 메뉴 -->
+  <ul class="menu">
+    <li><a href="#green">Green</a></li>
+    <li><a href="#blue">Blue</a></li>
+    <li><a href="#purple">Purple</a></li>
+    <li><a href="#red">Red</a></li>
+  </ul>
+  </nav>
+    <!-- 판매자 -->
+  <div class="seller">
+    <h1>판매자</h1>
+    <img src="./images/Penguins.jpg" alt="판매자" />
+  </div>
+
+    <section>
+      <div id="green" class="green beverage">
+      <h2>Green Tea Cooler</h2>
+      <img src="./images/green.jpg"
+        alt="Green Tea Coolor" title="Green Tea Coolor" />
+      <p>
+        Chock full of vitamins and minerals, this elixir combines the healthful benefits of green tea with a twist of chamomile blossoms and ginger root.
+      </p>
+      </div>
+    </section>
+
+    <section>
+      <div id="blue" class="blue beverage">
+      <h2>
+        Raspberry Ice Concentration
+      </h2>
+      <img src="./images/lightblue.jpg"
+        alt="Raspberry Ice Concentration"
+        title="Raspberry Ice Concentration"/>
+      <p>
+        Combining raspberry juice with lemon grass, citrus peel and rosehips, this icy drink will make your mind feel clear and crisp.
+      </p>
+      </div>
+    </section>
+
+    <section>
+      <div id="purple" class="purple beverage">
+      <h2>Blueberry Bliss Elixir</h2>
+      <img src="./images/blue.jpg"
+      alt="Blueberry Bliss Elixir"
+      title="Blueberry Bliss Elixir"/>
+      <p>
+        Blueberries and cherry essence mixed into a base of elderflower herb tea will put you in a relaxed state of bliss in no time.
+      </p>
+      </div>
+    </section>
+
+    <section>
+      <div id="red" class="red beverage">
+        <h2>Cranberry Antioxidant Blast</h2>
+        <img src="./images/red.jpg"
+        alt="Cranberry Antioxidant Blast"
+        title="Cranberry Antioxidant Blast" />
+        <p>
+          Wake up to the flavors of cranberry and hibiscus in this vitamin C rich elixir.
+        </p>
+      </div>
+    </section>
+
+    <p>
+    <a href="index.html">메인으로 돌아가기</a>
+    </p>
+
+  </body>
+</html>
